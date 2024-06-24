@@ -19,13 +19,11 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 
-from pos_restaurant.config import settings
+from customers.views import index
 
 urlpatterns = [
+    path("", index),
     path("admin/", admin.site.urls),
     path("api/", include("customers.urls")),
     path("api-auth/", include("rest_framework.urls")),
 ]
-
-if settings.DEBUG:
-    urlpatterns += include(settings.STATIC_URL)
